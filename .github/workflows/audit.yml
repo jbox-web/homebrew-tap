@@ -1,0 +1,24 @@
+name: Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  audit:
+    name: brew audit
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Tap this repo
+        run: brew tap jbox-web/tap "$(pwd)"
+
+      - name: Audit formula style
+        # --except-cops=FormulaAudit/Homepage skips homepage checks for
+        # projects that don't yet have a website
+        run: brew audit --strict --except-cops=FormulaAudit/Homepage mcp-grimoire-server
