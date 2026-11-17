@@ -9,23 +9,23 @@ class Crystalreleaser < Formula
 
   on_macos do
     on_intel do
-      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.1.0/crystalreleaser_0.1.0_darwin_amd64.tar.gz"
-      sha256 "d6ecabed429380b53643616ab3ec883ce9938369e08140229dec281f3444a9cb"
+      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.2.0/crystalreleaser_0.2.0_darwin_amd64.tar.gz"
+      sha256 "ef5d0285776c11504cd6bbe1c90d4104217e11abd3b08c0556accbd74bcd098c"
     end
     on_arm do
-      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.1.0/crystalreleaser_0.1.0_darwin_arm64.tar.gz"
-      sha256 "ca77e30c4480887f8996db4032caa2e4b9e20bda8d3ebc2f87bf58d36b3d0070"
+      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.2.0/crystalreleaser_0.2.0_darwin_arm64.tar.gz"
+      sha256 "9625731d61606e7b22798b2e49bea4f968d90bdcef3116c4957a4aba6746ca2c"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.1.0/crystalreleaser_0.1.0_linux_amd64.tar.gz"
-      sha256 "96fff4dba365bbb4dcc0d0e442c15d4f0de7dce9ddc36eb5deb4d4c9211cd457"
+      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.2.0/crystalreleaser_0.2.0_linux_amd64.tar.gz"
+      sha256 "2a97d59a0bf0519708f8614b3e7e6fda9ec9527981dce9d35e5de10ea170224c"
     end
     on_arm do
-      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.1.0/crystalreleaser_0.1.0_linux_arm64.tar.gz"
-      sha256 "638e4ec74c4102cd05bb6435e759aca286c841804d7175e35c52f435081e49d8"
+      url "https://github.com/jbox-web/crystalreleaser/releases/download/v0.2.0/crystalreleaser_0.2.0_linux_arm64.tar.gz"
+      sha256 "600e105670fd8e07831096b1a9ec5426e3e90848fab9c4a95279195103b42128"
     end
   end
 
