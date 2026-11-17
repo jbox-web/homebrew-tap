@@ -1,24 +1,42 @@
 name: Audit
 
+# Every job starts with no permission: this one only reads the checkout.
+permissions: {}
+
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   audit:
     name: brew audit
-    runs-on: macos-latest
+    runs-on: macos-26
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
+      # Attaches the checkout as the jbox-web/tap tap and trusts it: no
+      # `brew tap` step is needed in CI.
       - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
 
-      - name: Tap this repo
-        run: brew tap jbox-web/tap "$(pwd)"
-
-      - name: Audit formula style
-        # --except-cops=FormulaAudit/Homepage skips homepage checks for
-        # projects that don't yet have a website
-        run: brew audit --strict --except-cops=FormulaAudit/Homepage mcp-grimoire-server
+      # Every formula of Formula/, named one by one: `brew audit --tap`
+      # audits none of them and exits 0 (observed with Homebrew 7.0.14).
+      # The formulae are written by crystalreleaser, and Formula/ can be
+      # empty until a project publishes its first release.
+      - name: Audit every formula
+        run: |
+          set -- Formula/*.rb
+          if [ ! -e "$1" ]; then
+            echo "no formula to audit"
+            exit 0
+          fi
+          names=()
+          for formula in "$@"; do
+            names+=("jbox-web/tap/$(basename "$formula" .rb)")
+          done
+          brew audit --strict "${names[@]}"
