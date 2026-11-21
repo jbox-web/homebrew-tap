@@ -23,6 +23,15 @@ the contents of this repository.
 A formula is fixed by fixing its tool's `.crystalreleaser.yml` (`brews:`), or
 crystalreleaser itself, then releasing again.
 
+## Where the casks come from
+
+`Casks/` holds the macOS apps, which crystalreleaser does not build. Each cask is
+written by its project's release script, with the same rule: nothing by hand.
+`Casks/wattsup.rb` comes from `apple/release.sh` (template `apple/cask.rb.sh`) in
+`jbox-web/wattsup`, which pushes it to `master` in one commit
+(`Brew cask update for wattsup version <tag>`) with the maintainer's own git
+credentials. A cask is fixed in that template, then `apple/release.sh --cask`.
+
 ## Formula details
 
 - `on_macos`/`on_linux` × `on_intel`/`on_arm` blocks, one per platform the tool
@@ -34,7 +43,8 @@ crystalreleaser itself, then releasing again.
 ## CI
 
 `.github/workflows/audit.yml` runs `brew audit --strict` on every formula of
-`Formula/`, each named explicitly: `brew audit --tap=jbox-web/tap` audits none
+`Formula/`, and `brew audit --cask --strict --online` on every cask of `Casks/`
+(which downloads each archive and checks its sha256), each named explicitly: `brew audit --tap=jbox-web/tap` audits none
 of them and exits 0. `Homebrew/actions/setup-homebrew` attaches the checkout as
 the `jbox-web/tap` tap and trusts it, so the workflow has no tap step.
 

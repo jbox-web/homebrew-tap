@@ -40,3 +40,18 @@ jobs:
             names+=("jbox-web/tap/$(basename "$formula" .rb)")
           done
           brew audit --strict "${names[@]}"
+
+      # The same for the casks, written by their project's release script. --online
+      # downloads each archive and checks it against the cask's sha256.
+      - name: Audit every cask
+        run: |
+          set -- Casks/*.rb
+          if [ ! -e "$1" ]; then
+            echo "no cask to audit"
+            exit 0
+          fi
+          names=()
+          for cask in "$@"; do
+            names+=("jbox-web/tap/$(basename "$cask" .rb)")
+          done
+          brew audit --cask --strict --online "${names[@]}"
