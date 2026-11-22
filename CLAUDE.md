@@ -25,12 +25,12 @@ crystalreleaser itself, then releasing again.
 
 ## Where the casks come from
 
-`Casks/` holds the macOS apps, which crystalreleaser does not build. Each cask is
-written by its project's release script, with the same rule: nothing by hand.
-`Casks/wattsup.rb` comes from `apple/release.sh` (template `apple/cask.rb.sh`) in
-`jbox-web/wattsup`, which pushes it to `master` in one commit
-(`Brew cask update for wattsup version <tag>`) with the maintainer's own git
-credentials. A cask is fixed in that template, then `apple/release.sh --cask`.
+`Casks/` is for macOS apps, which crystalreleaser does not build. It holds none
+at the moment. The only one, `Casks/wattsup.rb`, was written by `apple/release.sh`
+in `jbox-web/wattsup` until 0.1.2 and removed when Watt's Up moved to an installer
+package updated by Sparkle (0.2.0): a cask there would fight the app's own updates.
+A cask added later follows the same rule as the formulae: written by its
+project's release script, never by hand.
 
 ## Formula details
 
