@@ -9,23 +9,23 @@ class Donico < Formula
 
   on_macos do
     on_intel do
-      url "https://github.com/jbox-web/donico/releases/download/v3.5.0/donico_3.5.0_darwin_amd64.tar.gz"
-      sha256 "37656519f7f7e7788df5712cf0af0e949f5c4839775316fabf8ff6ee3f6cb919"
+      url "https://github.com/jbox-web/donico/releases/download/v3.5.1/donico_3.5.1_darwin_amd64.tar.gz"
+      sha256 "b52c89c0f81b7794ad8961035bc5399f1ca17c2ac1ca06b26c593d749d6da009"
     end
     on_arm do
-      url "https://github.com/jbox-web/donico/releases/download/v3.5.0/donico_3.5.0_darwin_arm64.tar.gz"
-      sha256 "3e3f6a444a5273226e70934776f86a6d76997e0c937008be4b9027e00bbfdf51"
+      url "https://github.com/jbox-web/donico/releases/download/v3.5.1/donico_3.5.1_darwin_arm64.tar.gz"
+      sha256 "ef5fc97abb9168cb000c07ec944e9465e805a1bce034e5ae2610d7b81cabcc6e"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/jbox-web/donico/releases/download/v3.5.0/donico_3.5.0_linux_amd64.tar.gz"
-      sha256 "f418d6731352c549029c614d9bd9329ba773acb7c691dda9770de683e59e29cf"
+      url "https://github.com/jbox-web/donico/releases/download/v3.5.1/donico_3.5.1_linux_amd64.tar.gz"
+      sha256 "520dd3614b8617ee777419783baa352fd3b89895c7ca481926725562cf73affc"
     end
     on_arm do
-      url "https://github.com/jbox-web/donico/releases/download/v3.5.0/donico_3.5.0_linux_arm64.tar.gz"
-      sha256 "1df20559bcdcdba160976112b2d38c365638c5e85e3bb260847c4ae99a19d4fa"
+      url "https://github.com/jbox-web/donico/releases/download/v3.5.1/donico_3.5.1_linux_arm64.tar.gz"
+      sha256 "f9ac13279123bc3a84c2d0dd20cc6ee26a568c02449e71905180a1caff2255f3"
     end
   end
 
